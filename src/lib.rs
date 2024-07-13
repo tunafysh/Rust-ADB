@@ -1,7 +1,7 @@
 // src/lib.rs
 
 use std::process::Command;
-use std::io::{self, Read};
+use std::io::{self};
 
 pub struct ADB {
     bin: String,
