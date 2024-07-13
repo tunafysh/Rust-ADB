@@ -58,7 +58,7 @@ impl ADB {
     pub fn kill_server(&self, force: bool) -> Result<(), io::Error> {
         if force {
             if std::env::consts::OS != "windows" {
-                eprintln!("Force termination is not implemented on non-Windows systems, fallback to normal.");
+                self.exec_shell(&format!("killall -9 {}", self.bin))?;
             } else {
                 self.exec_shell(&format!("taskkill /f /im {}", self.bin))?;
             }
